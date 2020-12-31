@@ -53,14 +53,13 @@
 	  <configuration>
 	    <cloudHubDeployment>
 	      <uri>https://anypoint.mulesoft.com</uri>
-	      <muleVersion>${app.runtime}</muleVersion>
-	      <username>${username}</username>
-	      <password>${password}</password>
-	      <applicationName>${cloudhub.application.name}</applicationName>
-	      <environment>${environment}</environment>
-	      <region>${region}</region>
-	      <workers>${workers}</workers>
-	      <workerType>${workerType}</workerType>
+	      <muleVersion>4.1.4</muleVersion>
+	      <username>hamood20</username>
+	      <password>Hama20665474</password>
+	      <applicationName>mules-first-test</applicationName>
+	      <environment>Sandbox</environment>
+	      <workers>1</workers>
+	      <workerType>Micro</workerType>
 	      <properties>
 		<key>value</key>
 	      </properties>
