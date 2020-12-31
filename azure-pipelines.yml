@@ -18,15 +18,6 @@ steps:
 - task: MavenAuthenticate@0
   inputs:
     artifactsFeeds: 'xxxxx'
-- task: Cache@2
-  inputs:
-    key: 'maven | "$(Agent.OS)" | jenkins-maven/pom.xml'
-    path: '$(MAVEN_CACHE_FOLDER)'
-    cacheHitVar: 'CacheRestored'
-    restoreKeys: |
-      maven | "$(Agent.OS)"
-      maven
-  displayName: Cache Maven local repo
 - task: Maven@3
   inputs:
     mavenPomFile: 'jenkins-maven/pom.xml'
