@@ -38,6 +38,16 @@
     </pluginManagement>
   </build>
   <distributionManagement>
+    <repository>
+  <id>feedmule</id>
+  <url>https://pkgs.dev.azure.com/hamoodverus/mules/_packaging/feedmule/maven/v1</url>
+  <releases>
+    <enabled>true</enabled>
+  </releases>
+  <snapshots>
+    <enabled>true</enabled>
+  </snapshots>
+</repository>		
     <snapshotRepository>
       <id>nexus-snapshots</id>
       <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
