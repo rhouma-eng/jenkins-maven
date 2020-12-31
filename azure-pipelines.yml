@@ -20,13 +20,11 @@ steps:
     artifactsFeeds: 'xxxxx'
 - task: Maven@3
   inputs:
-    mavenPomFile: 'jenkins-maven/pom.xml'
-    goals: 'deploy'
+    mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
-    mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
