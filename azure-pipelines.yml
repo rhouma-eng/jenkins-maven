@@ -4,19 +4,49 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
-
+  branches:
+    include:
+    - dev
+  paths:
+    include:
+    - 'demo-app-azure-devops/*'
+ 
 pool:
   vmImage: 'ubuntu-latest'
-
+ 
 steps:
+- task: MavenAuthenticate@0
+  inputs:
+    artifactsFeeds: 'xxxxx'
+- task: Cache@2
+  inputs:
+    key: 'maven | "$(Agent.OS)" | demo-app-azure-devops/pom.xml'
+    path: '$(MAVEN_CACHE_FOLDER)'
+    cacheHitVar: 'CacheRestored'
+    restoreKeys: |
+      maven | "$(Agent.OS)"
+      maven
+  displayName: Cache Maven local repo
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
+    mavenPomFile: 'demo-app-azure-devops/pom.xml'
+    goals: 'deploy'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/target/*.jar'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    flattenFolders: true
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'DemoApplication'
+    publishLocation: 'Container'
