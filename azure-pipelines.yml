@@ -9,7 +9,7 @@ trigger:
     - dev
   paths:
     include:
-    - 'demo-app-azure-devops/*'
+    - 'jenkins-maven/*'
  
 pool:
   vmImage: 'ubuntu-latest'
@@ -20,7 +20,7 @@ steps:
     artifactsFeeds: 'xxxxx'
 - task: Cache@2
   inputs:
-    key: 'maven | "$(Agent.OS)" | demo-app-azure-devops/pom.xml'
+    key: 'maven | "$(Agent.OS)" | jenkins-maven/pom.xml'
     path: '$(MAVEN_CACHE_FOLDER)'
     cacheHitVar: 'CacheRestored'
     restoreKeys: |
@@ -29,7 +29,7 @@ steps:
   displayName: Cache Maven local repo
 - task: Maven@3
   inputs:
-    mavenPomFile: 'demo-app-azure-devops/pom.xml'
+    mavenPomFile: 'jenkins-maven/pom.xml'
     goals: 'deploy'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
