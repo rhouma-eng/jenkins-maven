@@ -71,18 +71,14 @@
   </build>
   <distributionManagement>
     <repository>
-  <id>feedmule</id>
-  <url>https://pkgs.dev.azure.com/hamoodverus/mules/_packaging/feedmule/maven/v1</url>
+  <id>mulefeed</id>
+  <url>https://pkgs.dev.azure.com/hamoodverus/06018b38-ca0c-4af7-890a-e42452ce273c/_packaging/mulefeed/maven/v1</url>
   <releases>
     <enabled>true</enabled>
   </releases>
   <snapshots>
     <enabled>true</enabled>
   </snapshots>
-</repository>		
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
-    </snapshotRepository>
+</repository>	
   </distributionManagement>
 </project>
