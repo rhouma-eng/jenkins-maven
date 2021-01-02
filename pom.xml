@@ -71,14 +71,14 @@
   </build>
   <distributionManagement>
     <repository>
-  <id>mulefeed</id>
-  <url>https://pkgs.dev.azure.com/hamoodverus/06018b38-ca0c-4af7-890a-e42452ce273c/_packaging/mulefeed/maven/v1</url>
+  <id>hamoodverus</id>
+  <url>https://pkgs.dev.azure.com/hamoodverus/_packaging/hamoodverus/maven/v1</url>
   <releases>
     <enabled>true</enabled>
   </releases>
   <snapshots>
     <enabled>true</enabled>
   </snapshots>
-</repository>	
+</repository>
   </distributionManagement>
 </project>
